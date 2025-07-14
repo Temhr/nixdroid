@@ -34,11 +34,11 @@
 
     # Declare useful shell aliases
     shellAliases = {
-      ll = "ls -alF";
-      gs = "git status";
-      .. = "cd ..";
-      ... = "cd ../..";
-      grep = "grep --color=auto";
+      "ll" = "ls -alF";
+      "gs" = "git status";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "grep" = "grep --color=auto";
     };
 
     # Extra lines to inject into .bashrc
