@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   # Shared user identity for nix-on-droid
-  home.username = "Temhr";
+  home.username = "nix-on-droid";
   home.homeDirectory = "/data/data/com.termux.nix/files/home";
   home.stateVersion = "25.05";
 
