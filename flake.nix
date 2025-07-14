@@ -20,7 +20,7 @@
           ];
         };
     in {
-      homeConfigurations = {
+      nixOnDroidConfigurations = {
         n5x    = mkHome ./phones/n5x.nix;
         p1xl   = mkHome ./phones/p1xl.nix;
         p3axl  = mkHome ./phones/p3axl.nix;
