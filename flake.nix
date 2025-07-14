@@ -10,17 +10,21 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "aarch64-linux";
-      mkHome = name: file: home-manager.lib.homeManagerConfiguration {
-        inherit system;
-        pkgs = import nixpkgs { inherit system; };
-        modules = [ ./phones/common.nix file ];
-      };
+
+      mkHome = filePath:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { inherit system; };
+          modules = [
+            ./phones/common.nix
+            (import filePath)
+          ];
+        };
     in {
       homeConfigurations = {
-        n5x    = mkHome "n5x"    ./phones/n5x.nix;
-        p1xl   = mkHome "p1xl"   ./phones/p1xl.nix;
-        p3axl  = mkHome "p3axl"  ./phones/p3axl.nix;
-        p6pro  = mkHome "p6pro"  ./phones/p6pro.nix;
+        n5x    = mkHome ./phones/n5x.nix;
+        p1xl   = mkHome ./phones/p1xl.nix;
+        p3axl  = mkHome ./phones/p3axl.nix;
+        p6pro  = mkHome ./phones/p6pro.nix;
       };
     };
 }
