@@ -1,8 +1,8 @@
 { pkgs, ... }: {
 
   # Shared user identity for nix-on-droid
-  home.username = "temhr";
-  home.homeDirectory = "/data/data/com.termux.nix/files/home";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
   home.stateVersion = "25.05";
 
   # Shared packages for all devices
