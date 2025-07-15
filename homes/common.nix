@@ -37,6 +37,7 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       "grep" = "grep --color=auto";
+      "switch" = "cd ~/nixdroid && git pull && nix-on-droid switch --flake ."
     };
 
     # Extra lines to inject into .bashrc
