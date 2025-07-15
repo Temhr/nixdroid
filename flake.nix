@@ -47,17 +47,13 @@
               };
             }
             
-            # Device-specific home-manager config
+            # Device-specific home-manager config (only if not default)
+          ] ++ (if deviceName != "default" then [
             {
               home-manager.config = ./homes/${deviceName}.nix;
             }
-            
-            # list of extra modules for Nix-on-Droid system
-            # { nix.registry.nixpkgs.flake = nixpkgs; }
-            # ./path/to/module.nix
-            # or import source out-of-tree modules like:
-            # flake.nixOnDroidModules.module
-          ];
+          ] else []);
+          
           # list of extra special args for Nix-on-Droid modules
           extraSpecialArgs = {
             # rootPath = ./.;
@@ -76,7 +72,7 @@
     in {
       # Nix-on-Droid system configurations with integrated home-manager
       nixOnDroidConfigurations = {
-        default = mkNixOnDroid ./systems/default.nix "default";
+        default = mkNixOnDroid ./systems/common.nix "default";
         n5x     = mkNixOnDroid ./systems/n5x.nix "n5x";
         p1xl    = mkNixOnDroid ./systems/p1xl.nix "p1xl";
         p3axl   = mkNixOnDroid ./systems/p3axl.nix "p3axl";
