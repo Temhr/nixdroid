@@ -18,7 +18,6 @@ My implementation of [nix-on-droid](https://github.com/nix-community/nix-on-droi
 
 # Repository Layout
 
-- **flake.nix**
 - **homes/**: home configs
   - **common.nix**: shared
   - **n5x.nix**: device-specific
@@ -31,3 +30,4 @@ My implementation of [nix-on-droid](https://github.com/nix-community/nix-on-droi
   - **p1xl.nix**: device-specific
   - **p3axl.nix**: device-specific
   - **p6pro.nix**: device-specific
+- **flake.nix**
