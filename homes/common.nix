@@ -21,7 +21,9 @@
     fzf         # Fuzzy finder
     tldr        # Short man pages
 
+    mosh        # Mobile shell (ssh replacement)
     openssh     # ssh/scp/sftp
+    sshfs       # allows remote filesystems to be mounted over SSH
 
     figlet cowsay lolcat  # fun
   ];
