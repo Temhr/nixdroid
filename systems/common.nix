@@ -1,64 +1,42 @@
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
 
-  # Shared user identity for nix-on-droid
-  home.username = "nix-on-droid";
-  home.homeDirectory = "/data/data/com.termux.nix/files/home";
-  home.stateVersion = "24.05";
+  # Simply install just the packages
+  environment.packages = with pkgs; [
+    # User-facing stuff that you really really want to have
+    vim # or some other editor, e.g. nano or neovim
 
-  # Shared packages for all devices
-  home.packages = with pkgs; [
-    bash
-    bat         # cat with syntax highlighting
-    curl        # Command-line HTTP client
-    fastfetch   # Terminal text editor
-    fd          # Simple find alternative
-    git         # Version control
-    htop        # Interactive system monitor
-    ripgrep     # Fast recursive search
-    starship    # Shell prompt
-
-    ncdu        # Disk usage tool
-    tree        # Directory tree
-
-    fzf         # Fuzzy finder
-    tldr        # Short man pages
-
-    mosh        # Mobile SSH
-    openssh     # ssh/scp/sftp
-
-    figlet cowsay lolcat  # fun
+    # Some common stuff that people expect to have
+    #procps
+    #killall
+    #diffutils
+    #findutils
+    #utillinux
+    #tzdata
+    #hostname
+    #man
+    #gnugrep
+    #gnupg
+    #gnused
+    #gnutar
+    #bzip2
+    #gzip
+    #xz
+    #zip
+    #unzip
   ];
 
-  # Bash shell configuration
-  programs.bash = {
-    enable = true;
+  # Backup etc files instead of failing to activate generation if a file already exists in /etc
+  environment.etcBackupExtension = ".bak";
 
-    # Declare useful shell aliases
-    shellAliases = {
-      "ll" = "ls -alF";
-      "gs" = "git status";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "grep" = "grep --color=auto";
-    };
+  # Read the changelog before changing this value
+  system.stateVersion = "24.05";
 
-    # Extra lines to inject into .bashrc
-    initExtra = ''
-      export PATH="$HOME/.nix-profile/bin:$PATH"
+  # Set up nix for flakes
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
-      # Display system info at login
-      fastfetch
+  # Set your time zone
+  time.timeZone = "America/Toronto";
 
-      # Optional: Enable color support for ls and grep
-      if [ -x /usr/bin/dircolors ]; then
-        eval "$(dircolors -b)"
-      fi
-    '';
-  };
-
-  # Enable starship prompt
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-  };
 }
