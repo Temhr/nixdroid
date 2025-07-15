@@ -25,11 +25,21 @@
     #unzip
   ];
 
-  users.users = {
-    nix-on-droid = {
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKITqIX76nKk6GvwM//USjaBD+YruF7YiTJxMNXUXVu2 temhr" ]; # Add your SSH public key(s) here, if you plan on using SSH to connect
+  # Enable SSH daemon
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
     };
   };
+
+  # Your public key (replace with your actual key)
+  users.users.nix-on-droid.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKITqIX76nKk6GvwM//USjaBD+YruF7YiTJxMNXUXVu2 temhr"
+  ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
