@@ -40,7 +40,7 @@
       "..." = "cd ../..";
       "grep" = "grep --color=auto";
       "switch" = "cd ~/nixdroid && git pull && nix-on-droid switch --flake .";
-      "reload" = "source ~/.bashrc"
+      "reload" = "source ~/.bashrc";
     };
 
     # Extra lines to inject into .bashrc
