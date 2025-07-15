@@ -2,10 +2,12 @@
 
   # Shared user identity for nix-on-droid
   home.username = "nix-on-droid";
+  home.homeDirectory = "/data/data/com.termux.nix/files/home";
   home.stateVersion = "25.05";
 
   # Shared packages for all devices
   home.packages = with pkgs; [
+    bash
     bat         # cat with syntax highlighting
     curl        # Command-line HTTP client
     fastfetch   # Terminal text editor
