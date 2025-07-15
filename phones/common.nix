@@ -1,6 +1,7 @@
 { pkgs, ... }: {
 
   # Shared user identity for nix-on-droid
+  home.username = "nix-on-droid";
   home.stateVersion = "25.05";
 
   # Shared packages for all devices
