@@ -17,16 +17,17 @@ My implementation of [nix-on-droid](https://github.com/nix-community/nix-on-droi
 </details>
 
 # Repository Layout
-├── flake.nix
-├── homes/
-│   ├── common.nix      # Shared home config
-│   ├── n5x.nix         # Device-specific config
-│   ├── p1xl.nix        # Device-specific config  
-│   ├── p3axl.nix       # Device-specific config
-│   └── p6pro.nix       # Device-specific config
-└── systems/
-    ├── common.nix      # Shared system config
-    ├── n5x.nix         # Device-specific config
-    ├── p1xl.nix        # Device-specific config
-    ├── p3axl.nix       # Device-specific config
-    └── p6pro.nix       # Device-specific config
+
+- **flake.nix**
+- **homes/**: home configs
+  - **common.nix**: shared
+  - **n5x.nix**: device-specific
+  - **p1xl.nix**: device-specific
+  - **p3axl.nix**: device-specific
+  - **p6pro.nix**: device-specific
+- **systems/**: system configs
+  - **common.nix**: shared
+  - **n5x.nix**: device-specific
+  - **p1xl.nix**: device-specific
+  - **p3axl.nix**: device-specific
+  - **p6pro.nix**: device-specific
