@@ -13,6 +13,7 @@ My implementation of [nix-on-droid](https://github.com/nix-community/nix-on-droi
   3) Clone repo `git clone https://github.com/Temhr/nixdroid`
   4) `cd nixdroid` and `nix-on-droid switch --flake .#{device}`
 - Updating systems imperatively:
+  - `git pull ~/nixdroid`
   - `nix-on-droid switch --flake ./nixdroid`
 </details>
 
